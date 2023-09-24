@@ -1,5 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export interface MergeGroupPayload {
+  base_ref: string
+  base_sha: string
+  head_commit: {
+    author?: {
+      email: string
+      name: string
+    }
+    committer?: {
+      email: string
+      name: string
+    }
+    id: string
+    message: string
+    tree_id: string
+    timestamp: string
+  }
+  head_ref: string
+  head_sha: string
+}
+
 export interface PayloadRepository {
   [key: string]: any
   full_name?: string
@@ -21,6 +42,7 @@ export interface WebhookPayload {
     html_url?: string
     body?: string
   }
+  merge_group?: MergeGroupPayload
   pull_request?: {
     [key: string]: any
     number: number
